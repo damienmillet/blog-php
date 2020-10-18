@@ -31,7 +31,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/{tag}", name="blog")
+     * @Route("/md/{tag}", name="blog")
      * @param MarkDown $down
      * @param Yml $yml
      * @param string $tag
