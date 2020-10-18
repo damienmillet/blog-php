@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Articles</h2>
+        <label for="myInput"></label><input class="form-control mt-4" id="myInput" type="text" placeholder="Chercher..">
+        <section class="article-list mt-3 pb-5">
+            {% for article in articles %}
+                <a href="{{ path('blog',{'id':article.id}) }}" class="rounded each media mySearch">
+                    <div class="mr-4 align-self-center">
+                        <img src="{{ asset('images/upload/' ~ article.logo) }}" class="rounded" width="60" height="60"
+                             alt="">
+                    </div>
+                    <div class="media-body text-truncate">
+                        <div class="row ">
+                            <h2 class="each-title text-truncate">{{ article.title }}</h2>
+                            <div class="each-date ml-auto mt-2">{{ article.updateDate }}</div>
+                        </div>
+                        <div class="each-lead ">{{ article.intro }}</div>
+                    </div>
+                </a>
+            {% else %}
+                <p class="text-center card bg-alerte">Aucun article pour le moment</p>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}

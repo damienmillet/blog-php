@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="article container">
+            <div class="media row container">
+                <div class="mr-4 mt-1">
+                    <img class="rounded" src="{{ asset('images/upload/' ~ article.logo) }}" width="100" height="100"
+                         style="min-width:100px" alt="">
+                </div>
+                <div id="info-article">
+                    <h1 class="text-truncate">
+                        {{ article.title }}
+                    </h1>
+                    <p class="text-secondary">
+                        {% if article.updateDate %}
+                            Mis a jour le :
+                            {{ article.updateDate|date }}
+                        {% else %}
+                            Créé le :
+                            {{ article.creationDate|date }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <h3 class="mt-5">
+                {{ article.intro|e }}
+            </h3>
+            <div id="article-content" class="mt-10 mb-10">
+                {{ article.content|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

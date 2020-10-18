@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Bienvenue !{% endblock %}</title>
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('images/ico.png') }}"/>
+</head>
+<body onload="document.body.style.opacity='1'" class="bg-cloud">
+<header class="bg-cloud sticky-top mb-4">
+    <nav class="navbar navbar-light navbar-expand-sm">
+        <a class="navbar-brand" href="{{ path('home') }}">
+            <img src="{{ asset('images/crab.png') }}" width="30" height="30" alt="" class="mr-3 rounded">
+            <b>Damien Millet</b>
+        </a>
+        <button class="navbar-toggler ml-auto btn-light" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto mt-2 mt-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('blog') }}">Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main role="main" class="container pb-5 pt-5">
+    {% block content %}{% endblock %}
+</main>
+{% block body %}{% endblock %}
+<footer class="bg-cloud fixed-bottom">
+    <nav class="navbar container navbar-expand navbar-light">
+        <div class="navbar-nav ml-auto">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://twitter.com/MilletDamien">
+                        <i class="fab fa-twitter-square" aria-hidden="true"></i>
+                        <div>Twitter</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/damien-millet-a3b97a174/">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <div>Linkedin</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/damienmillet">
+                        <i class="fab fa-github-square" aria-hidden="true"></i>
+                        <div>Github</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</footer>
+{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <!-- section 1 : Presentation -->
+    <section id="presentation">
+        <div class="row">
+            <div class="m-auto">
+                <h1 class="text-center">Je suis Damien</h1>
+                <p>
+                    Je developpe en php et j'aime les crabes et le travail propre et épuré.<br>
+                    Actuellement en formation avec OpenClassrooms et bientot disponible.<br>
+                    Suivez-moi sur mes reseaux ou contactez moi directement depuis ce site. &#128540;
+                </p>
+            </div>
+            <div class="rounded profile m-auto">
+                <img class="card-img rounded" src="{{ asset('images/avatar.png') }}" alt="Card image">
+            </div>
+        </div>
+    </section>
+    <!-- section 2 : Last Article -->
+    <section class="article-list mb-5" id="lastArticle">
+        <h2 class="text-center mb-5">Derniers Articles</h2>
+        <div class="">
+            {% for article in articles|slice(0, 5) %}
+                <a href="{{ path('blog',{'id':article.id}) }}" class="rounded media each">
+                    <div class="mr-3">
+                        <img class="rounded" src="{{ asset('images/upload/' ~ article.logo) }}" width="30"
+                             height="30" alt="logo">
+                    </div>
+                    <div class="media-body align-self-center text-truncate">
+                        <h2 class="each-title text-truncate">{{ article.title }}</h2>
+                    </div>
+                </a>
+            {% else %}
+                <p class="text-center card bg-alerte">Aucun article pour le moment</p>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- section 3 : Contact -->
+    <section id="contact">
+        <div class="jumbotron border">
+            <h2 class="text-center mb-5">Me Contacter</h2>
+            <div class="col-6 mx-auto">
+                {{ form(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
