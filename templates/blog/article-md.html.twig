@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="article">
+        <div class="media">
+            <div class="mr-4 mt-1">
+                <img class="rounded" src="{{ asset('images/upload/' ~ article.filename) }}" width="100" height="100"
+                     style="min-width:100px" alt="">
+            </div>
+            <div id="info-article">
+                <h1 class="text-truncate">
+                    {{ article.filenameWithoutExtension|replace({"-" : " "}) }}
+                </h1>
+                <p class="text-secondary">
+                    Publié le :
+                    {{ article.mTime|date }}
+                </p>
+            </div>
+        </div>
+        <div id="article-content" class="mt-10 mb-10">
+            {{ article.contents|markdown_to_html }}
+        </div>
+    </div>
+{% endblock %}

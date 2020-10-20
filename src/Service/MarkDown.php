@@ -15,14 +15,18 @@ class MarkDown
 
     public function getMD(?string $patterns, ?string $dir = 'data')
     {
-        $file = $this->finder->files()->in($dir)->path($patterns);
-        return $file->hasResults() ? $file->name($patterns . '.md') : FALSE;
+        $files = $this->finder->files()->in($dir)->path($patterns);
+        if ($files->hasResults()) {
+            foreach ($files as $file) {
+                $res = $file;
+            }
+        }
+        return $res ?? FALSE;
     }
 
-    public function getAllMD(?string $patterns, ?string $dir = 'data'): Finder
+    public function getAllMD(?string $dir = 'data'): Finder
     {
-        // sortbydate
-        $files = $this->finder->files()->in($dir)->path($patterns);
-        return $files->sortByModifiedTime();
+        $files = $this->finder->files()->in($dir)->path('');
+        return $files->sortByModifiedTime()->reverseSorting();
     }
 }

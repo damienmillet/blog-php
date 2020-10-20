@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('images/ico.png') }}"/>
 </head>
-<body onload="document.body.style.opacity='1'" class="bg-cloud">
-<header class="bg-cloud sticky-top mb-4">
+<body>
+<header class="sticky-top">
     <nav class="navbar navbar-light navbar-expand-sm">
         <a class="navbar-brand" href="{{ path('home') }}">
             <img src="{{ asset('images/crab.png') }}" width="30" height="30" alt="" class="mr-3 rounded">
@@ -35,7 +35,7 @@
     {% block content %}{% endblock %}
 </main>
 {% block body %}{% endblock %}
-<footer class="bg-cloud fixed-bottom">
+<footer class="fixed-bottom">
     <nav class="navbar container navbar-expand navbar-light">
         <div class="navbar-nav ml-auto">
             <ul class="nav">

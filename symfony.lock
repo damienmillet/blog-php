@@ -99,6 +99,9 @@
     "egulias/email-validator": {
         "version": "2.1.22"
     },
+    "erusev/parsedown": {
+        "version": "1.7.4"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -107,6 +110,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
+    },
+    "league/html-to-markdown": {
+        "version": "4.10.0"
     },
     "nikic/php-parser": {
         "version": "v4.10.2"
@@ -388,6 +394,9 @@
         "version": "v5.1.7"
     },
     "twig/extra-bundle": {
+        "version": "v3.0.5"
+    },
+    "twig/markdown-extra": {
         "version": "v3.0.5"
     },
     "twig/twig": {

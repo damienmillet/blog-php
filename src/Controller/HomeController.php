@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\MailType;
 use App\Repository\ArticleRepository;
+use App\Service\MarkDown;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +17,13 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param ArticleRepository $articleRepository
+     * @param MarkDown $down
      * @param Request $request
+     * @param MailerInterface $mailer
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer): Response
+    public function index(MarkDown $down, Request $request, MailerInterface $mailer): Response
     {
         $form = $this->createForm(MailType::class);
 
@@ -36,8 +38,13 @@ class HomeController extends AbstractController
             $mailer->send($email);
         }
 
-        return $this->render('home/index.html.twig', [
+        /*return $this->render('home/index.html.twig', [
             'articles' => $articleRepository->findBy([], NULL, '5'),
+            'form' => $form->createView()
+        ]);*/
+
+        return $this->render('home/index.html.twig', [
+            'articles' => $down->getAllMD(),
             'form' => $form->createView()
         ]);
     }

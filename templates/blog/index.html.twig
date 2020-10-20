@@ -7,7 +7,8 @@
         <label for="myInput"></label><input class="form-control mt-4" id="myInput" type="text" placeholder="Chercher..">
         <section class="article-list mt-3 pb-5">
             {% for article in articles %}
-                <a href="{{ path('blog',{'id':article.id}) }}" class="rounded each media mySearch">
+                {{ article.contents|markdown_to_html }}
+                {#<a href="{{ path('blog',{'id':article.id}) }}" class="rounded each media mySearch">
                     <div class="mr-4 align-self-center">
                         <img src="{{ asset('images/upload/' ~ article.logo) }}" class="rounded" width="60" height="60"
                              alt="">
@@ -19,7 +20,7 @@
                         </div>
                         <div class="each-lead ">{{ article.intro }}</div>
                     </div>
-                </a>
+                </a>#}
             {% else %}
                 <p class="text-center card bg-alerte">Aucun article pour le moment</p>
             {% endfor %}

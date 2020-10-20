@@ -3,34 +3,34 @@
 {% block content %}
     <!-- section 1 : Presentation -->
     <section id="presentation">
-        <div class="row">
+        <div class="row ">
             <div class="m-auto">
                 <h1 class="text-center">Je suis Damien</h1>
                 <p>
-                    Je developpe en php et j'aime les crabes et le travail propre et épuré.<br>
-                    Actuellement en formation avec OpenClassrooms et bientot disponible.<br>
+                    Je developpe en php et j'aime le travail propre et épuré.<br>
+                    Fraichement diplômé d'OpenClassrooms et pleinement disponible.<br>
                     Suivez-moi sur mes reseaux ou contactez moi directement depuis ce site. &#128540;
                 </p>
             </div>
-            <div class="rounded profile m-auto">
-                <img class="card-img rounded" src="{{ asset('images/avatar.png') }}" alt="Card image">
-            </div>
+            <img class="rounded mr-auto" width="175" src="{{ asset('images/avatar.png') }}" alt="Card image">
         </div>
     </section>
     <!-- section 2 : Last Article -->
-    <section class="article-list mb-5" id="lastArticle">
+    <section class="article-list mb-5" id="article-list">
         <h2 class="text-center mb-5">Derniers Articles</h2>
         <div class="">
             {% for article in articles|slice(0, 5) %}
-                <a href="{{ path('blog',{'id':article.id}) }}" class="rounded media each">
-                    <div class="mr-3">
-                        <img class="rounded" src="{{ asset('images/upload/' ~ article.logo) }}" width="30"
-                             height="30" alt="logo">
+                <div class="rounded article media mySearch">
+                    <div class="media-body">
+                        <div class="row">
+                            <div class="each-date col-2">{{ article.mTime|date('M y') }}</div>
+                            <a href="{{ path('blog', {'tag':article.filenameWithoutExtension}) }}"
+                               class="each-title col-8">
+                                {{ article.filenameWithoutExtension|replace({"-" : " "}) }}
+                            </a>
+                        </div>
                     </div>
-                    <div class="media-body align-self-center text-truncate">
-                        <h2 class="each-title text-truncate">{{ article.title }}</h2>
-                    </div>
-                </a>
+                </div>
             {% else %}
                 <p class="text-center card bg-alerte">Aucun article pour le moment</p>
             {% endfor %}
